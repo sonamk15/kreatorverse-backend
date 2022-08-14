@@ -1,0 +1,31 @@
+{
+  "name": "kreatorverse-backend",
+  "version": "1.0.0",
+  "description": "kreatorverse assignment",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonamk15/kreatorverse-backend.git"
+  },
+  "author": "Sonam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sonamk15/kreatorverse-backend/issues"
+  },
+  "homepage": "https://github.com/sonamk15/kreatorverse-backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
+    "mongoose": "^6.5.2",
+    "morgan": "^1.10.0"
+  }
+}
