@@ -90,7 +90,6 @@ initialSetup();
 routesSetups();
 errorHandlers();
 dbConnection();
-
 const listerner = app.listen(8000, () => {
   console.log(
     `⚡️[server]: Server is running at http://localhost:${
