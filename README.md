@@ -7,7 +7,7 @@ kreatorverse backend module
 
 2. Run the `node seed.js` cpmmand for creating super admin initially
 
-## App deplyed on Heroku
+## App deploy on Heroku
 
 1. Login on Heroku using `heroku login` command
 2. Create `Procfile` for targeting your app default heroku take websocket

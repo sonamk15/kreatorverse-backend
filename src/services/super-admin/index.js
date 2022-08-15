@@ -16,10 +16,10 @@ class SuperAdminServices {
         to: venderData.email,
         html: `<h2>Welcome to the Kreatorverse</h2><p>Login credetial for vender dashboard</p><p>email: ${venderData.email}</p> <p>password: ${venderData.password}</p>`,
       };
-      await sendEmail(mailPayload);
       return await user
         .save()
-        .then((doc) => {
+        .then(async(doc) => {
+          await sendEmail(mailPayload);
           return { success: true, data: doc, status: 200 };
         })
         .catch((err) => {
