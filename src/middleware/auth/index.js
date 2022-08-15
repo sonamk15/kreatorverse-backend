@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
-const createJwtToken = (data) => {
-  return jwt.sign(data, "kreatorasdf1234sf!@#msdk", { expiresIn: "1d" });
+const createJwtToken = (payload) => {
+  return jwt.sign(payload, "kreatorasdf1234sf!@#msdk", { expiresIn: "1d" });
 };
 
 const authToken = (req, res, next) => {

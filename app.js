@@ -1,28 +1,32 @@
 const express = require("express");
 const bodyparser = require("body-parser");
-const path = require("path");
 const cors = require("cors");
-const morgan = require("morgan");
-const moment = require("moment");
-var fs = require("fs");
-var createError = require("http-errors");
+const createError = require("http-errors");
 require("dotenv").config();
+// const path = require("path");
+// const morgan = require("morgan");
+// const moment = require("moment");
+// const fs = require("fs");
 
 const db = require("./src/db");
 const routerMap = require("./router");
 let app = express();
 
-const DB_URL = 'mongodb+srv://snmk1509:snm101510@kreatorverse.iiaxb4x.mongodb.net/kreatorverse?retryWrites=true&w=majority'
+const DB_URL =
+  "mongodb+srv://snmk1509:snm101510@kreatorverse.iiaxb4x.mongodb.net/kreatorverse?retryWrites=true&w=majority";
 
 // //create API log folder outside the project directory to avoid the project restart
 // const folder = "../api-logs";
 
 initialSetup = () => {
   app.use(bodyparser.json({ limit: "150mb", parameterLimit: 5000 }));
-  app.use(bodyparser.urlencoded({limit:'150mb', parameterLimit:5000, extended:true }))
-
-  app.use(express.json())
-  app.use(express.urlencoded({extended:false}))
+  app.use(
+    bodyparser.urlencoded({
+      limit: "150mb",
+      parameterLimit: 5000,
+      extended: true,
+    })
+  );
   app.use(cors({ origin: "*" }));
 
   // // setup the logger
@@ -84,7 +88,7 @@ errorHandlers = () => {
 
 dbConnection = () => {
   db.connect(DB_URL);
-}
+};
 
 initialSetup();
 routesSetups();

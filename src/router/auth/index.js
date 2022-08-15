@@ -13,14 +13,4 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/sing-up", async (req, res) => {
-  const userSingUp = await AuthServices.singUp(req.body);
-  req.apiRes = userSingUp;
-  if (userSingUp.success) {
-    res.status(userSingUp.status).send(userSingUp);
-  } else {
-    res.status(userSingUp.status).send(userSingUp);
-  }
-});
-
 module.exports = router;
