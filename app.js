@@ -14,8 +14,8 @@ let app = express();
 
 const DB_URL = 'mongodb+srv://snmk1509:snm101510@kreatorverse.iiaxb4x.mongodb.net/kreatorverse?retryWrites=true&w=majority'
 
-//create API log folder outside the project directory to avoid the project restart
-const folder = "../api-logs";
+// //create API log folder outside the project directory to avoid the project restart
+// const folder = "../api-logs";
 
 initialSetup = () => {
   app.use(bodyparser.json({ limit: "150mb", parameterLimit: 5000 }));
@@ -25,34 +25,34 @@ initialSetup = () => {
   app.use(express.urlencoded({extended:false}))
   app.use(cors({ origin: "*" }));
 
-  // setup the logger
-  if (!fs.existsSync(folder)) {
-    fs.mkdirSync(folder);
-    fs.writeFileSync(`${folder}/log.json`, JSON.stringify([]));
-  }
+  // // setup the logger
+  // if (!fs.existsSync(folder)) {
+  //   fs.mkdirSync(folder);
+  //   fs.writeFileSync(`${folder}/log.json`, JSON.stringify([]));
+  // }
 
-  app.use(
-    morgan((tokens, req, res) => {
-      let rawdata = fs.readFileSync(`${folder}/log.json`);
-      let jsonData = JSON.parse(rawdata);
-      const data = {
-        "METHOD:": tokens.method(req, res),
-        "URI:": tokens.url(req, res),
-        "STATUS_CODE:": tokens.status(req, res),
-        "BODY:": JSON.stringify(req.body),
-        PARAMS: JSON.stringify(req.params),
-        QUERY_PARAMS: JSON.stringify(req.query),
-        "HEADER:": JSON.stringify(req.headers),
-        API_RES: req.apiRes ? JSON.stringify(req.apiRes) : null,
-        "RESPONCE_TIME:": `${tokens["response-time"](req, res)}ms`,
-        "TOTAL_RES_TIME:": `${tokens["total-time"](req, res)}ms`,
-        "REQ_DATE_TIME:": moment(tokens.date()).format("DD-MM-YYYY hh:mm:ss A"),
-      };
-      jsonData.push(data);
-      fs.writeFileSync(`${folder}/log.json`, JSON.stringify(jsonData, null, 2));
-      return;
-    })
-  );
+  // app.use(
+  //   morgan((tokens, req, res) => {
+  //     let rawdata = fs.readFileSync(`${folder}/log.json`);
+  //     let jsonData = JSON.parse(rawdata);
+  //     const data = {
+  //       "METHOD:": tokens.method(req, res),
+  //       "URI:": tokens.url(req, res),
+  //       "STATUS_CODE:": tokens.status(req, res),
+  //       "BODY:": JSON.stringify(req.body),
+  //       PARAMS: JSON.stringify(req.params),
+  //       QUERY_PARAMS: JSON.stringify(req.query),
+  //       "HEADER:": JSON.stringify(req.headers),
+  //       API_RES: req.apiRes ? JSON.stringify(req.apiRes) : null,
+  //       "RESPONCE_TIME:": `${tokens["response-time"](req, res)}ms`,
+  //       "TOTAL_RES_TIME:": `${tokens["total-time"](req, res)}ms`,
+  //       "REQ_DATE_TIME:": moment(tokens.date()).format("DD-MM-YYYY hh:mm:ss A"),
+  //     };
+  //     jsonData.push(data);
+  //     fs.writeFileSync(`${folder}/log.json`, JSON.stringify(jsonData, null, 2));
+  //     return;
+  //   })
+  // );
 };
 
 //  route setup
