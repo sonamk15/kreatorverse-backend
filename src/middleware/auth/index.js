@@ -9,7 +9,6 @@ const authToken = (req, res, next) => {
     req.headers["x-access-token"] || req.headers["authorization"];
   let token =
     authHeader && authHeader.length > 0 ? authHeader.split(" ")[1] : null;
-  console.log(req.baseUrl);
   if (!token && req.query.token) {
     token = req.query.token;
   }

@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const moment = require("moment");
 const { User } = require("../../model/user");
 const { Product } = require("../../model/product");
-
+const sendEmail = require("../sendEmail");
 class SuperAdminServices {
   createVender = async (venderData) => {
     try {
@@ -12,6 +12,11 @@ class SuperAdminServices {
       user.password = await bcrypt.hash(venderData.password, salt);
       user.login_at = moment().format("DD-MM-YYYY hh:mm:ss A");
       user.last_login_at = moment().format("DD-MM-YYYY hh:mm:ss A");
+      const mailPayload = {
+        to: venderData.email,
+        html: `<h2>Welcome to the Kreatorverse</h2><p>Login credetial for vender dashboard</p><p>email: ${venderData.email}</p> <p>password: ${venderData.password}</p>`,
+      };
+      await sendEmail(mailPayload);
       return await user
         .save()
         .then((doc) => {
