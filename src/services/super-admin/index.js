@@ -14,7 +14,7 @@ class SuperAdminServices {
       user.last_login_at = moment().format("DD-MM-YYYY hh:mm:ss A");
       const mailPayload = {
         to: venderData.email,
-        html: `<h2>Welcome to the Kreatorverse</h2><p>Login credetial for vender dashboard</p><p>email: ${venderData.email}</p> <p>password: ${venderData.password}</p><p><a href="https://62f9f662c5804515272f9a93--the-awesome-sonamk15-site.netlify.app/login" target="_blank">Click On </a> this link for login</p>`,
+        html: `<h2>Welcome to the Kreatorverse</h2><p>Login credetial for vender dashboard</p><p>email: ${venderData.email}</p> <p>password: ${venderData.password}</p><p><a href="https://62f9f662c5804515272f9a93--the-awesome-sonamk15-site.netlify.app" target="_blank">Click On </a> this link for login</p>`,
       };
       return await user
         .save()
